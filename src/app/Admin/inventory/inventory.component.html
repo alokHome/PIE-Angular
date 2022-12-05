@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label for="txnDate">{{cmSrc.txnType}}</label>
+                                <input class="form-control" placeholder= "yyyy-mm-dd" name="txnDate" ngbDatepicker
+                                    #d="ngbDatepicker" ngModel>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"
+                                        type="button"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id </th>
+                <th>Inventory</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let invt of invnList">
+                <td>{{ invt.id }}</td>
+                <td>{{ invt.invn }}</td>
+                <td>{{ invt.inventoryType }}</td>
+                <td>
+                    {{ invt.purchaseDt | date :'dd/mm/yyyy'}}
+                </td>
+                <td>{{ invt.amount }}</td>
+                <td>{{ invt.note }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
